@@ -3,6 +3,7 @@ import { render, wait } from '@testing-library/react';
 import App from '../App';
 import LOCALSTORAGE_CONSTANT from '../constants/localStorageConstants'
 import ListMock from './mocks/todoMock.json'
+import ListingTodoModel from '../models/todoModel';
 
 test('renders Top Header', () => {
   const { getByTestId } = render(<App />);
@@ -47,9 +48,12 @@ test('renders List Header', () => {
 });
 
 test('renders List Header Title Check', () => {
+  window.localStorage.setItem(LOCALSTORAGE_CONSTANT.TODO_LIST, JSON.stringify(ListMock));
   const { getByTestId } = render(<App />);
   const linkElement = getByTestId(/list-header/);
-  expect(linkElement.textContent).toStrictEqual('Todo List')
+  let jsonListFromStorage: Array<ListingTodoModel> = ListMock
+  let title = ListingTodoModel.getHeaderTitleForTodoList(jsonListFromStorage)
+  expect(linkElement.textContent).toStrictEqual(title)
 });
 
 test('check List Updation on Adding Todos', () => {

@@ -7,4 +7,10 @@ export default class ListingTodoModel {
         this.listingTitle = listingTitle
     }
 
+    static getHeaderTitleForTodoList = (list:ListingTodoModel[]) => {
+        const count = list.filter((e)=>{
+          return e.isStriked === true
+        })
+        return `Total todos remaining: ${list.length - count.length} out of ${list.length}`
+      }
 }

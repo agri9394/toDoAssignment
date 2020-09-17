@@ -50,6 +50,5 @@ export default function useAddTodo() {
         }
     }
 
-
     return { setStrikeUnStrike, setText, list }
 }
