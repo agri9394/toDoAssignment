@@ -1,0 +1,13 @@
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    background-color: burlywood;
+}
+
+.headerTitleStyle{
+   color: black;
+   font-family: monospace;
+   font-weight: bold;
+}
