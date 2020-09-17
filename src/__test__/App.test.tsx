@@ -61,7 +61,6 @@ test('check List Updation on Adding Todos', () => {
   button.click()
   wait();
   const text = getByText(testTodo)
-  console.log(text.textContent)
   expect(text.textContent).toStrictEqual(testTodo)
 });
 
@@ -74,7 +73,6 @@ test('check List Updation on Adding Todos', () => {
   button.click()
   wait();
   const text = getByText(testTodo)
-  console.log(text.textContent)
   expect(text.textContent).toStrictEqual(testTodo)
 });
 
@@ -87,15 +85,25 @@ test('check List Updation on Adding Todos', () => {
   button.click()
   wait();
   const text = getByText(testTodo)
-  console.log(text.textContent)
   expect(text.textContent).toStrictEqual(testTodo)
 });
 
-test('check Striking of Todo List', () => {
+test('check Striking of Todo List',  () => {
   window.localStorage.setItem(LOCALSTORAGE_CONSTANT.TODO_LIST, JSON.stringify(ListMock));
-  const { getByTestId,getByText } = render(<App />);
-  const input = getByText(/dasdasa/);
-  console.log(input.className)
-  // expect(text.textContent).toStrictEqual(testTodo)
+  const {getByText } = render(<App />);
+  const labeltext = getByText(/asdasd/);
+  labeltext.click()
+  wait();
+  expect(labeltext.className).toContain('strikeText')
 });
 
+// test('check unStriking of Todo List',  async () => {
+//   window.localStorage.setItem(LOCALSTORAGE_CONSTANT.TODO_LIST, JSON.stringify(ListMock));
+//   const {getByText } = render(<App />);
+//   const labeltext = getByText(/akj/);
+//   // console.log(labeltext.className)
+//   labeltext.click()
+//   // await wait(3)
+//   // console.log(labeltext.className)
+//   expect(labeltext.className).not.toContain('strikeText')
+// });
